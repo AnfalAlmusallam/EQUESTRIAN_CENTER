@@ -22,7 +22,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="{% static 'images/horse_logo.png'%}" alt="..." style="height: 140px; width: 140px;" /></a>
+                <a class="navbar-brand" href="#page-top"><img src="{% static 'images/horse_logo.png'%}" alt=" horse_logo " style="height: 100px; width: 140px;" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -36,6 +36,12 @@
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'main:add_club_page' %}">Add club</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'main:show_club_page' %}">Available clubs </a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">{{request.user.username}}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout_user' %}">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login_user' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'main:home_page' %}">Home</a></li>
+
+                        </ul>
 
                     </ul>
                 </div>

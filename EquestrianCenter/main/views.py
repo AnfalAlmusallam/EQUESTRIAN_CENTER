@@ -1,10 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpRequest,HttpResponse
-from .models import Club
+from .models import Club,Review
+from django.contrib.auth.models import User
+
 
 '''define home_page to display home page '''
 
 def home_page(request:HttpRequest):
+    
       return render(request,"main/home.html")
 
 ''' create add_club_page to make teams add clubs in this Center'''
@@ -16,12 +19,56 @@ def add_club_page(request:HttpRequest):
 
       return render(request, "main/add_club.html")
 
+def update_club(request : HttpRequest, club_id):
+
+    club= Club.objects.get(id=club_id)
+    if request.method == "POST":
+        club.club_name = request.POST["club_name"]
+        club.club_services = request.POST["club_services"]
+        club. price= request.POST["price"]
+        #to check if user chosen a file to upload for the update
+        if "image" in request.FILES:
+            club.image = request.FILES["image"]
+
+        club.save()
+        return redirect("main:show_club_page")
+
+    return render(request, "main/update_club.html", {"update": club})
+    
+
+def delete_club(request : HttpRequest, club_id):
+   
+    club=Club.objects.get(id=club_id)
+    club.delete()
+    return redirect("main:home_page")
+
 '''create show_club_page to display the clubs for user'''
 def show_club_page(request:HttpRequest):
-     
-    show_club = Club.objects.all()
+    
+    show_club= Club.objects.all()
+    context={"show_club":show_club}
 
-    context = {"show" : show_club}
-    return render(request, "main/show_club.html", context)
+    return render(request,"main/show_club.html",context)
+
+''' create club_detail to delete and update clubs from database and add reviews'''
+def club_detail(request : HttpRequest, club_id):
+
+    club= Club.objects.get(id=club_id)
+    reviews =Review.objects.filter(club=club)
+
+    return render(request,"main/club_detail.html", {"club":club,"reviews":reviews})
+
+
+'''club in the Review model equal to club in Club model'''
+
+def add_review(request : HttpRequest,club_id):
+
+    if request.method == "POST":
+        club = Club.objects.get(id=club_id)
+        new_review = Review(user= request.user,club=club, content = request.POST["content"],rating= request.POST.get('rating',False),created_at=request.POST.get('created_at',False))
+        new_review.save()
+
+    return redirect("main:club_detail", club_id=club_id)
+
 
 
