@@ -39,7 +39,7 @@
                 <div class="container">
                     <h2 style="text-align: center;padding-top: 3%;">Add a New book </h2>
                     <div class="alert" style="background-color:#c5bb31" role="alert">
-                        <form action="{% url  'main:add_book' club.id %}" method="post">
+                        <form action="{% url  'main:book_club' club.id %}" method="post">
                             {% csrf_token %} 
 
                         <div class="mt-3">
@@ -55,18 +55,7 @@
                             <label class="form-label">final time :</label>
                             <input type="time" class="form-control" name="final_time"/>
                           </div>
-                          <label class="form-label"><strong>  Type of survices:</strong></label>
-                     <select name="club_services" class="form-control"  required>
-               {% for services in club_services%}
-              <optgroup label="{{services.club_services}}" >
-
-                <option value={{club_survices}}>{{club_services}}</option>
-
-           
-          </optgroup>
-          {% endfor %}
-        </select>
-                        
+                       
                           <input type="submit" class="btn btn-primary" value=" add Book" />
                     
                         

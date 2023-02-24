@@ -1,7 +1,7 @@
 {% extends 'main/home.html'%}
 {% block content %}
 <style>body{
-    background-color: #39bbdb;
+    background-color: #e00b0b;
     color: #fff;
     padding-bottom: 0;
     min-height: 100%;
@@ -20,7 +20,7 @@
 }
 
 .error-container h1 {
-  color: #39bbdb;
+  color:white;
 }
 
 .error-container h1 {
@@ -76,7 +76,7 @@ a:hover{
         <div class="error-divider">
             <p class="description"> Sorry we can't move forward thre is a book at the same time try another time thank you..</p>
         </div>
-        <a href="{% url 'main/home.html '%}" class="return-btn"><i class="fa fa-home"></i>Home</a>
+        <a href="{% url 'main:home_page'%}" class="return-btn"><i class="fa fa-home"></i>Home</a>
     </section>
 </div>
 {% endblock %}

@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from phone_field import PhoneField
+
 
 # Create your models here.
 '''Create class named Club and its objects '''
@@ -19,6 +21,7 @@ class Club(models.Model):
         return f"{self.club_services}"
     
     
+'''Create class Booking and its objects for user to book club '''
 
 class Booking(models.Model):
     club=models.ForeignKey(Club,on_delete=models.CASCADE)
@@ -31,7 +34,7 @@ class Booking(models.Model):
 
 
 
-'''Create class named Comment and its objects '''
+'''Create class named Review and its objects to review and rate clubs '''
 
 class Review(models.Model):
     club=models.ForeignKey(Club,on_delete=models.CASCADE)
@@ -40,4 +43,14 @@ class Review(models.Model):
     rating=models.FloatField()
     image= models.ImageField(upload_to="profile_pic",default='default.jpg')
     created_at=models.DateTimeField(auto_now_add=True)
+
+'''Create class named Contact nd its objects to contact with client'''
+'''using  pip install django-phone-field for phone number '''
+class Contact(models.Model):
+        user=models.ForeignKey(User,on_delete=models.CASCADE)
+        email=models.EmailField(max_length=50)
+        phone_number=PhoneField(blank=True,help_text='contact phone number')
+        msg=models.TextField()
+
+
     

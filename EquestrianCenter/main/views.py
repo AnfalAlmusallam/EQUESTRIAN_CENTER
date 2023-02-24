@@ -95,14 +95,17 @@ def book_club(request : HttpRequest,club_id):
         check_time= Booking.objects.filter(initial_time =request.POST['initial_time'],final_time=request.POST["final_time"])
         
         if check_time :
-         
-           render(request,"main/apologize.html")
+           return render(request,"main/apologize.html")
+
 
         else: 
-            new_book.save()
-            return redirect('main:home_page')
+           new_book.save()
+           return redirect('main:home_page')
+
+
         
     return redirect("main:book_detail", club_id=club_id)
+
 
 
 
