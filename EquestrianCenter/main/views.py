@@ -87,7 +87,7 @@ def check_availbal_date(date1 : datetime , date2 :datetime) -> bool:
         return False
     
 
-def add_book(request : HttpRequest,club_id):
+def book_club(request : HttpRequest,club_id):
 
     if request.method == "POST":
         club = Club.objects.get(id=club_id)
