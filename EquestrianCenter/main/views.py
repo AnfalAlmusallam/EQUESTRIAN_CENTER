@@ -1,7 +1,10 @@
 from django.shortcuts import render,redirect
 from django.http import HttpRequest,HttpResponse
-from .models import Club,Review
+from .models import Club,Review,Booking
 from django.contrib.auth.models import User
+from datetime import datetime
+from django.contrib import messages
+
 
 
 '''define home_page to display home page '''
@@ -69,6 +72,40 @@ def add_review(request : HttpRequest,club_id):
         new_review.save()
 
     return redirect("main:club_detail", club_id=club_id)
+
+def book_detail(request : HttpRequest, club_id):
+
+    club= Club.objects.get(id=club_id)
+    book =Booking.objects.filter(club=club,user= request.user)
+    
+    return render(request,"main/book_detail.html", {"club":club,"book":book})
+
+def check_availbal_date(date1 : datetime , date2 :datetime) -> bool:
+    if date1 == date2:
+        return True
+    else:
+        return False
+    
+
+def add_book(request : HttpRequest,club_id):
+
+    if request.method == "POST":
+        club = Club.objects.get(id=club_id)
+        new_book=Booking(user= request.user,club=club,initial_time= request.POST["initial_time"], final_time=request.POST["final_time"])
+        check_time= Booking.objects.filter(initial_time =request.POST['initial_time'],final_time=request.POST["final_time"])
+        
+        if check_time :
+         
+           render(request,"main/apologize.html")
+
+        else: 
+            new_book.save()
+            return redirect('main:home_page')
+        
+    return redirect("main:book_detail", club_id=club_id)
+
+
+
 
 
 

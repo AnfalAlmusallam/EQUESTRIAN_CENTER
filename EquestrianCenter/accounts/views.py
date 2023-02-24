@@ -33,7 +33,7 @@ def logout_user(request : HttpRequest):
 
     logout(request)
 
-    return redirect("hospital:home_page")
+    return redirect("main:home_page")
 
 def loged_out(request:HttpRequest):
     return render(request,"accounts/logout.html")

@@ -11,6 +11,10 @@ urlpatterns =[
     path("review/add/<club_id>/", views.add_review,name="add_review"),
     path("details/<club_id>/", views.club_detail,name="club_detail"),
     path("delete/club/<club_id>/",views.delete_club,name="delete_club"),
+    path("book_detail/<club_id>/",views.book_detail,name="book_detail"),
+    path("book/add/<club_id>/", views.add_book,name="add_book"),
+
+
 
 
 ]

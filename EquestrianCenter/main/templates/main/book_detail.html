@@ -1,0 +1,92 @@
+{% extends 'main/home.html' %}
+
+{% block title %}   {% endblock %}
+
+
+{% block content %}
+
+
+    
+    <hr/>
+
+    <div  class=" mt-3">
+        <h3>Book :</h3>
+        {% for book in book  %}
+            <div class="p-2 border mt-2">
+
+                <h5>{{ book.user.username }}</h5>
+                <h5>{{ book.club}}</h5>
+
+                <h6>{{ book.initial_time }}</h6>
+                <p>{{ book.final_time}}</p>
+
+            </div>
+        {% endfor %}
+        <div class="m-3 d-flex gap-2">
+            <a href="#" class="btn btn-primary">update</a>
+
+            <a href="#" class="btn btn-danger">delete</a>
+        </div>
+    </div>
+
+    <hr />
+
+    {% if request.user.is_authenticated %}
+    <div class="mt-3">
+        <h3>Add Book</h3>
+        <div>
+            
+                <div class="container">
+                    <h2 style="text-align: center;padding-top: 3%;">Add a New book </h2>
+                    <div class="alert" style="background-color:#c5bb31" role="alert">
+                        <form action="{% url  'main:add_book' club.id %}" method="post">
+                            {% csrf_token %} 
+
+                        <div class="mt-3">
+                          <label class="form-label">Club name :</label>
+                          <input class="form-control" name="club" type="text"/>
+                        </div>
+                    
+                        <div class="mt-3">
+                            <label class="form-label">initial time :</label>
+                            <input type="time" class="form-control" name="initial_time"/>
+                          </div>
+                          <div class="mt-3">
+                            <label class="form-label">final time :</label>
+                            <input type="time" class="form-control" name="final_time"/>
+                          </div>
+                          <label class="form-label"><strong>  Type of survices:</strong></label>
+                     <select name="club_services" class="form-control"  required>
+               {% for services in club_services%}
+              <optgroup label="{{services.club_services}}" >
+
+                <option value={{club_survices}}>{{club_services}}</option>
+
+           
+          </optgroup>
+          {% endfor %}
+        </select>
+                        
+                          <input type="submit" class="btn btn-primary" value=" add Book" />
+                    
+                        
+                    
+                    </form>
+                    
+        </div>
+    </div>
+
+    {% else %}
+
+    <div class="border p-3 mt-3 ">
+        <p>To add reveiew please <a href="{% url 'accounts:login_user'%}">Sing In</a> or <a href="{% url 'accounts:register_user'%}">Sign Up</a></p>
+    </div>
+
+    {% endif %}
+
+
+
+</div>
+
+
+{% endblock %}
