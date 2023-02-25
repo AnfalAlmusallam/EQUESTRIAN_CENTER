@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
 from django.http import HttpRequest,HttpResponse
-from .models import Club,Review,Booking
+from .models import Club,Review,Booking,Contact
 from django.contrib.auth.models import User
 from datetime import datetime
 from django.contrib import messages
+from django.core.mail import BadHeaderError,send_mail
 
 
 
@@ -105,6 +106,35 @@ def book_club(request : HttpRequest,club_id):
 
         
     return redirect("main:book_detail", club_id=club_id)
+ 
+
+def contact(request:HttpRequest):
+    if request.method=="POST":
+        contact=Contact(request.POST)
+        if contact:
+            subject="Website Inquiry"
+            first_name=request.POST.get('first_name')
+            last_name=request.POST.get('last_name')
+            email=request.POST.get('email')
+            msg=request.POST.get('msg')
+            
+   
+        try:
+            send_mail(subject,'anfal.ame9@gmail.com',['anfal.ame8@gmail.com'])
+        except BadHeaderError:
+            return HttpResponse('Invalid header found ')
+        return redirect("main:home_page")
+    form=contact()
+    return render(request,"main/home.html",{'form':form})
+
+
+'''Create top_clubs based on rating'''
+def top_clubs(request:HttpRequest):
+    top_clubs= Club.objects.filter(rating__gte=4)
+
+    context = {"top_clubs" : top_clubs}
+    return render(request, "main/top_club.html", context)
+
 
 
 

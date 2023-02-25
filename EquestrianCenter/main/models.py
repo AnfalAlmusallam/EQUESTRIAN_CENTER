@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from phone_field import PhoneField
-
 
 # Create your models here.
 '''Create class named Club and its objects '''
@@ -46,11 +44,12 @@ class Review(models.Model):
 
 '''Create class named Contact nd its objects to contact with client'''
 '''using  pip install django-phone-field for phone number '''
+
 class Contact(models.Model):
-        user=models.ForeignKey(User,on_delete=models.CASCADE)
-        email=models.EmailField(max_length=50)
-        phone_number=PhoneField(blank=True,help_text='contact phone number')
-        msg=models.TextField()
+     first_name=models.CharField(max_length=50)
+     last_name=models.CharField(max_length=50)
+     email=models.EmailField(max_length=50)
+     msg=models.TextField()
 
 
     

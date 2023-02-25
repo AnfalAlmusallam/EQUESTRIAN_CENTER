@@ -13,5 +13,7 @@ urlpatterns =[
     path("delete/club/<club_id>/",views.delete_club,name="delete_club"),
     path("book_detail/<club_id>/",views.book_detail,name="book_detail"),
     path("book/add/<club_id>/", views.book_club,name="book_club"),
+    path('contact/',views.contact,name="contact"),
+    path('top_clubs/',views.top_clubs,name="top_clubs"),
 
 ]

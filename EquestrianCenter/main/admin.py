@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Club,Review,Booking
+from .models import Club,Review,Booking,Contact
 # Register your models here.
 ''' create admin panel to display all models  and its objects therefore whe can add and change data'''
 
@@ -14,10 +14,18 @@ class ReviewAdmin(admin.ModelAdmin):
 class BookingAdmin(admin.ModelAdmin):
       list_display = ('club','initial_time','final_time')
 
+class ContactAdmin(admin.ModelAdmin):
+      list_display = ('first_name','last_name','email','msg')
+
+
 
 admin.site.register(Club, ClubAdmin)
 admin.site.register(Review,ReviewAdmin)
 admin.site.register(Booking, BookingAdmin)
+admin.site.register(Contact, ContactAdmin)
+
+
+
 
 
 
