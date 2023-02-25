@@ -17,8 +17,9 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'main/css/styles.css' %}" rel="stylesheet" />
+        
     </head>
-    <body id="page-top">
+    <body id="page-top" style="height: 20rem;font-family: 'Kalam',cursive;">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
@@ -29,10 +30,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+
                         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">Top Clubs </a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#testimonial">Testimonial</a></li>
+
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'main:add_club_page' %}">Add club</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'main:show_club_page' %}">Available clubs </a></li>
@@ -41,9 +45,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login_user' %}">Login</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'main:home_page' %}">Home</a></li>
 
-
                         </ul>
-
                     </ul>
                 </div>
             </div>
@@ -94,7 +96,6 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Services</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
                 <div class="row text-center">
                     <div class="col-md-4">
@@ -103,16 +104,14 @@
                             <i class='fas fa-solid fa-horse fa-stack-1x fa-inverse'></i>
 
                         </span>
-                        <h4 class="my-3">Children Riding</h4>
-                        <p class="text-muted">Beginner (with trainer and intensive lessons)</p>
+                        <h4 class="my-3">Modern Clubs </h4>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class='fas fa-horse-head fa-stack-1x fa-inverse'></i>
                         </span>
-                        <h4 class="my-3">Vaulting Riding Lesson </h4>
-                        <p class="text-muted">Professional (without trainer)</p>
+                        <h4 class="my-3">Courses and lessons for different ages </h4>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
@@ -120,112 +119,31 @@
                             <i class='fas fa-solid fa-horse-saddle fa-stack-1x fa-inverse'></i>                  
 
                            </span> 
-                        <h4 class="my-3">Vaulting Riding Lesson </h4>
-                        <p class="text-muted">Intermediate (with trainer)</p>
+                        <h4 class="my-3">Affordable prices </h4>
                 </div>
             </div>
         </section>
         <!-- Portfolio Grid-->
-        <section class="page-section bg-light" id="portfolio">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 1-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="{% static 'images/horse_image_one.jpg' %}" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Threads</div>
-                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+        <div class="container">
+            <h2> Top Clubs !</h2>
+        
+            <div class="row">
+                {% for club in top_clubs %}
+                    <div class="col-3">
+                        <div class="p-4 shadow" >
+                            <img src="{{ club.image.url }}" class="w-100" />
+                            <a href="{% url 'main:club_detail' club.id %}" class="text-decoration-none"><h4 class="mt-4"><p style="padding-top: 3%;"><strong>Club name :</strong> {{club.club_name}}</p></a>
+        
+                            <div class="mt-3">
+                                <p class="title mb-4"><strong> services :</strong>{{club.club_services}}</p>
+                                <p class="title mb-4"><strong>Price :</strong> {{club.price}}</p>
                             </div>
+        
+                            <h6>Rating: {{ club.rating }}</h6>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 2-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Explore</div>
-                                <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 3-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Finish</div>
-                                <div class="portfolio-caption-subheading text-muted">Identity</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-                        <!-- Portfolio item 4-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/4.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Lines</div>
-                                <div class="portfolio-caption-subheading text-muted">Branding</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-                        <!-- Portfolio item 5-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/5.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Southwest</div>
-                                <div class="portfolio-caption-subheading text-muted">Website Design</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <!-- Portfolio item 6-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/6.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Window</div>
-                                <div class="portfolio-caption-subheading text-muted">Photography</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                {% endfor %}
+        
         <!-- About-->
         <section class="page-section" id="about">
             <div class="container" >
@@ -305,112 +223,27 @@
                 </div>
             </div>
         </section>
-        <!-- Clients-->
-        <div class="py-5">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/microsoft.svg" alt="..." aria-label="Microsoft Logo" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/google.svg" alt="..." aria-label="Google Logo" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/facebook.svg" alt="..." aria-label="Facebook Logo" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/ibm.svg" alt="..." aria-label="IBM Logo" /></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Contact-->
-        <section class="page-section" id="contact">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- * * SB Forms Contact Form * *-->
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- This form is pre-integrated with SB Forms.-->
-                <!-- To make this form functional, sign up at-->
-                <!-- https://startbootstrap.com/solution/contact-forms-->
-                <!-- to get an API token!-->
-                <form  data-sb-form-api-token="API_TOKEN" action="{% url 'main:contact' %}" method="post">
-                    {% csrf_token %}
-
-                    
-                    <div class="row align-items-stretch mb-5">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <!-- Name input-->
-                                <input class="form-control" name="first_name" type="text" placeholder="First Name *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- Name input-->
-                                <input class="form-control" name="last_name" type="text" placeholder="Last Name *" style="margin-bottom: 3%; margin-top: 3%;" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- Email address input-->
-                                <input class="form-control" type="email" name="email" placeholder="Your Email *" data-sb-validations="required,email" />
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
-                            
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group form-group-textarea mb-md-0">
-                                <!-- Message input-->
-                                <textarea class="form-control" name="msg"placeholder="Your Message *" data-sb-validations="required"></textarea>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Submit success message-->
-                    <!---->
-                    <!-- This is what your users will see when the form-->
-                    <!-- has successfully submitted-->
-                    <div class="d-none" id="submitSuccessMessage">
-                        <div class="text-center text-white mb-3">
-                            <div class="fw-bolder">Form submission successful!</div>
-                            To activate this form, sign up at
-                            <br />
-                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                        </div>
-                    </div>
-                    <!-- Submit error message-->
-                    <!---->
-                    <!-- This is what your users will see when there is-->
-                    <!-- an error submitting the form-->
-                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                    <!-- Submit Button-->
-                    <div class="text-center"><input type="submit" value="Send Message" style="width: 20rem; margin-bottom:3%;" /></div>
-                </form>
-            </div>
-        </section>
-        <!-- Footer-->
-        <footer class="footer py-4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
-                    <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                    <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
+       
         <!-- Portfolio Modals-->
         <!-- Portfolio item 1 modal popup-->
+        <div class="wrapper">
+            <div class="title">Work <small>Hard</small> Play <small>Hard</small></div>
+            <div class="description">
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus    odio adipisci ducimus? Impedit est dolore maxime unde repudiandae blanditiis        veritatis accusamus, in fugit excepturi optio aperiam officia eius, omnis          numquam omnis  numquam. omnis   numquam.</p>
+            </div>
+         </div>
+         <div class="wrapper border-radius" id="testimonial">
+            <div class="description text-right">
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus    odio adipisci ducimus? Impedit est dolore maxime unde repudiandae blanditiis        veritatis accusamus, in fugit excepturi optio aperiam officia eius, omnis          numquam omnis  numquam. omnis   numquam.</p>
+            </div>
+            <div class="title">Work <small>Hard</small> Play <small>Hard</small></div>
+         </div>
+         <div class="wrapper border-radius">
+            <div class="title">Work <small>Hard</small> Play <small>Hard</small></div>
+            <div class="description">
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus    odio adipisci ducimus? Impedit est dolore maxime unde repudiandae blanditiis        veritatis accusamus, in fugit excepturi optio aperiam officia eius, omnis          numquam omnis  numquam. omnis   numquam.</p>
+            </div>
+         </div>
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -620,6 +453,74 @@
                 </div>
             </div>
         </div>
+          <!-- Contact-->
+          <section class="page-section" id="contact">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase" style="padding-bottom: 3%;">Contact Us</h2>
+                </div>
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- * * SB Forms Contact Form * *-->
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- This form is pre-integrated with SB Forms.-->
+                <!-- To make this form functional, sign up at-->
+                <!-- https://startbootstrap.com/solution/contact-forms-->
+                <!-- to get an API token!-->
+                <form  data-sb-form-api-token="API_TOKEN" action="{% url 'main:contact' %}" method="post">
+                    {% csrf_token %}
+
+                    
+                    <div class="row align-items-stretch mb-5">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <!-- Name input-->
+                                <input class="form-control" name="first_name" type="text" placeholder="First Name *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Name input-->
+                                <input class="form-control" name="last_name" type="text" placeholder="Last Name *" style="margin-bottom: 3%; margin-top: 3%;" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Email address input-->
+                                <input class="form-control" type="email" name="email" placeholder="Your Email *" data-sb-validations="required,email" />
+                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-textarea mb-md-0">
+                                <!-- Message input-->
+                                <textarea class="form-control" name="msg"placeholder="Your Message *" data-sb-validations="required"></textarea>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Submit success message-->
+                    <!---->
+                    <!-- This is what your users will see when the form-->
+                    <!-- has successfully submitted-->
+                    <div class="d-none" id="submitSuccessMessage">
+                        <div class="text-center text-white mb-3">
+                            <div class="fw-bolder">Form submission successful!</div>
+                            To activate this form, sign up at
+                            <br />
+                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                        </div>
+                    </div>
+                    <!-- Submit error message-->
+                    <!---->
+                    <!-- This is what your users will see when there is-->
+                    <!-- an error submitting the form-->
+                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                    <!-- Submit Button-->
+                    <div class="text-center"><input type="submit" value="Send Message" style="width: 20rem; margin-bottom:3%;" /></div>
+                </form>
+            </div>
+        </section>
+        <!-- Footer-->
         {% endblock %}
         <!-- Bootstrap core JS-->
         <script src="{% static 'main/https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' %}"></script>
