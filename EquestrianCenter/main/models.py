@@ -15,8 +15,7 @@ class Club(models.Model):
 
     def __str__(self) -> str:
         return f"{self.club_name}"
-    def __str__(self) -> str:
-        return f"{self.club_services}"
+   
     
     
 '''Create class Booking and its objects for user to book club '''
@@ -27,8 +26,10 @@ class Booking(models.Model):
     initial_time=models.TimeField()
     final_time=models.TimeField()
 
+
     def __str__(self) -> str:
         return f"{self.club} "
+    
 
 
 
@@ -39,11 +40,13 @@ class Review(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     content=models.TextField()
     rating=models.FloatField()
-    image= models.ImageField(upload_to="profile_pic",default='default.jpg')
+    image= models.ImageField(upload_to="profile_pic",default='images/defult.jpg')
     created_at=models.DateTimeField(auto_now_add=True)
+    def __str__(self) -> str:
+    
 
-'''Create class named Contact nd its objects to contact with client'''
-'''using  pip install django-phone-field for phone number '''
+
+     '''Create class named Contact nd its objects to contact with client'''
 
 class Contact(models.Model):
      first_name=models.CharField(max_length=50)

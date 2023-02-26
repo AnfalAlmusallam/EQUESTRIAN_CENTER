@@ -2,14 +2,24 @@ from django.shortcuts import render,redirect
 from django.http import HttpRequest, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from .models import Profile
+from main.models import Club,Booking
+
 
 # Create your views here.
 
 '''create user '''
 def register_user(request:HttpRequest):
     if request.method=="POST":
-       new_user=User.objects.create_user(username=request.POST["username"],email=request.POST["email"],password=request.POST["password"])
+       
+       new_user=User.objects.create_user(username=request.POST["username"], email=request.POST["email"], password=request.POST["password"], first_name = request.POST["first_name"], last_name = request.POST["last_name"])
        new_user.save()
+
+       '''Creating the profile'''
+       user_profile = Profile(user=new_user, birth_date=request.POST["birth_date"], gender=request.POST["gender"])
+       user_profile.save()
+
+        #if register successful redirect to sign in page
        return redirect("accounts:login_user")
     return render(request,"accounts/register.html")
 
@@ -37,3 +47,12 @@ def logout_user(request : HttpRequest):
 
 def loged_out(request:HttpRequest):
     return render(request,"accounts/logout.html")
+
+
+def profile_user(request : HttpRequest,club_id):
+
+    club= Club.objects.get(id=club_id)
+    book= Booking.objects.filter(club=club,user= request.user)
+
+    return render(request, "accounts/profile.html",{"club":club,"book":book})
+

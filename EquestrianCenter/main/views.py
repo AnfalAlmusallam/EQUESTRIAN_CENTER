@@ -11,8 +11,18 @@ from django.core.mail import BadHeaderError,send_mail
 '''define home_page to display home page '''
 
 def home_page(request:HttpRequest):
+
+    top_clubs=Review.objects.filter(rating__gte=4)
+
     
-      return render(request,"main/home.html")
+    return render(request,"main/home.html", {"top_clubs" : top_clubs})
+
+def consent_to_TOS(request : HttpRequest):
+
+    response = redirect("main:home_page")
+    response.set_cookie("consent", "Yes", max_age=60*60*24*7)
+    return response
+
 
 ''' create add_club_page to make teams add clubs in this Center'''
 def add_club_page(request:HttpRequest):
@@ -58,6 +68,7 @@ def show_club_page(request:HttpRequest):
 def club_detail(request : HttpRequest, club_id):
 
     club= Club.objects.get(id=club_id)
+
     reviews =Review.objects.filter(club=club)
 
     return render(request,"main/club_detail.html", {"club":club,"reviews":reviews})
@@ -128,12 +139,7 @@ def contact(request:HttpRequest):
     return render(request,"main/home.html",{'form':form})
 
 
-'''Create top_clubs based on rating'''
-def top_clubs(request:HttpRequest):
-    top_clubs= Club.objects.filter(rating__gte=4)
 
-    context = {"top_clubs" : top_clubs}
-    return render(request, "main/top_club.html", context)
 
 
 

@@ -14,6 +14,7 @@ urlpatterns =[
     path("book_detail/<club_id>/",views.book_detail,name="book_detail"),
     path("book/add/<club_id>/", views.book_club,name="book_club"),
     path('contact/',views.contact,name="contact"),
-    path('top_clubs/',views.top_clubs,name="top_clubs"),
+    path("consent/tos/", views.consent_to_TOS, name="consent_to_tos"),
+
 
 ]

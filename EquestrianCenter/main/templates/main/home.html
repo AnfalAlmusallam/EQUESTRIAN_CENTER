@@ -17,33 +17,259 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'main/css/styles.css' %}" rel="stylesheet" />
+
         
     </head>
+    
     <body id="page-top" style="height: 20rem;font-family: 'Kalam',cursive;">
+        <style>body{margin-top:20px;}
+
+            .card-big-shadow {
+                max-width: 320px;
+                position: relative;
+            }
+            
+            .coloured-cards .card {
+                margin-top: 30px;
+            }
+            
+            .card[data-radius="none"] {
+                border-radius: 0px;
+            }
+            .card {
+                border-radius: 8px;
+                box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+                background-color: #FFFFFF;
+                color: #252422;
+                margin-bottom: 20px;
+                position: relative;
+                z-index: 1;
+            }
+            
+            
+            .card[data-background="image"] .title, .card[data-background="image"] .stats, .card[data-background="image"] .category, .card[data-background="image"] .description, .card[data-background="image"] .content, .card[data-background="image"] .card-footer, .card[data-background="image"] small, .card[data-background="image"] .content a, .card[data-background="color"] .title, .card[data-background="color"] .stats, .card[data-background="color"] .category, .card[data-background="color"] .description, .card[data-background="color"] .content, .card[data-background="color"] .card-footer, .card[data-background="color"] small, .card[data-background="color"] .content a {
+                color:black;
+            }
+            .card.card-just-text .content {
+                padding: 50px 65px;
+                text-align: center;
+            }
+            .card .content {
+                padding: 20px 20px 10px 20px;
+            }
+            
+            .card .category, .card .label {
+                font-size: 14px;
+                margin-bottom: 0px;
+            }
+            .card-big-shadow:before {
+                background-image: url("http://static.tumblr.com/i21wc39/coTmrkw40/shadow.png");
+                background-position: center bottom;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                bottom: -12%;
+                content: "";
+                display: block;
+                left: -12%;
+                position: absolute;
+                right: 0;
+                top: 0;
+                z-index: 0;
+            }
+            h4, .h4 {
+                font-size: 1.5em;
+                font-weight: 600;
+                line-height: 1.2em;
+            }
+            h6, .h6 {
+                font-size: 0.9em;
+                font-weight: 600;
+            }
+            .card .description {
+                font-size: 16px;
+                color: #66615b;
+            }
+            .content-card{
+                margin-top:30px;    
+            }
+            a:hover, a:focus {
+                text-decoration: none;
+            }
+            
+            /*======== COLORS ===========*/
+            .card[data-color="blue"] {
+                background: burlywood;
+            }
+          
+            
+            .card[data-color="brown"] .description {
+                color: #75442e;
+            }
+            .card[data-color="brown"] .category {
+                color: #a47e65;
+            }
+            <!--CSS Button-->
+.button-74 {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: #fff;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+
+.card::after {
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    width: calc(100% - 40px);
+    height: 35px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 19px 28px 5px rgba(64,64,64,0.09);
+    box-shadow: 0 19px 28px 5px rgba(64,64,64,0.09);
+    content: '';
+    z-index: -1;
+}
+a.card {
+    text-decoration: none;
+}
+
+.card {
+    position: relative;
+    border: 0;
+    border-radius: 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 12px 20px 1px rgba(64,64,64,0.09);
+    box-shadow: 0 12px 20px 1px rgba(64,64,64,0.09);
+}
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,0.125);
+    border-radius: .25rem;
+}
+
+.box-shadow {
+    -webkit-box-shadow: 0 12px 20px 1px rgba(64,64,64,0.09) !important;
+    box-shadow: 0 12px 20px 1px rgba(64,64,64,0.09) !important;
+}
+
+.ml-auto, .mx-auto {
+    margin-left: auto !important;
+}
+.mr-auto, .mx-auto {
+    margin-right: auto !important;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.bg-white {
+    background-color: #fff !important;
+}
+
+.ml-auto, .mx-auto {
+    margin-left: auto !important;
+}
+
+.mr-auto, .mx-auto {
+    margin-right: auto !important;
+}
+.d-block {
+    display: block !important;
+}
+img, figure {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+.card-text {
+    padding-top: 12px;
+    color: #8c8c8c;
+}
+
+.text-sm {
+    font-size: 12px !important;
+}
+p, .p {
+    margin: 0 0 16px;
+}
+
+.card-title {
+    margin: 0;
+    font-family: "Montserrat",sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.pt-1, .py-1 {
+    padding-top: .25rem !important;
+}
+
+.head-icon{
+    margin-top:18px;
+    color:burlywood
+}
+            </style>
+
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="{% static 'images/horse_logo.png'%}" alt=" horse_logo " style="height: 100px; width: 140px;" /></a>
+                <a class="navbar-brand" href="{% url 'main:home_page' %}"><img src="{% static 'images/horse_logo.png'%}" alt=" horse_logo " style="height: 100px; width: 140px;" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-md-0">
 
                         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">Top Clubs </a></li>
+                        <li class="nav-item"><a class="nav-link" href="#top_clubs">Top Clubs </a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
                         <li class="nav-item"><a class="nav-link" href="#testimonial">Testimonial</a></li>
-
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'main:add_club_page' %}">Add club</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'main:show_club_page' %}">Available clubs </a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">{{request.user.username}}</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout_user' %}">Logout</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login_user' %}">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'main:home_page' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:profile_user' %}">{{request.user.username}}<i class='fa fa-user-circle'></i></a></li>
 
                         </ul>
                     </ul>
@@ -92,57 +318,75 @@
           </div>
         <!-- Services-->
         {% block content %}
-        <section class="page-section" id="services">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Services</h2>
-                </div>
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class='fas fa-solid fa-horse fa-stack-1x fa-inverse'></i>
+        <section class="container pt-3 mb-3" id="services">
+            <a type="button" class="btn btn-warning" href="{% url 'main:add_club_page' %}">Add Club</a>
+            <h2 class="section-heading text-uppercase" style="text-align:center;">Services</h2>
 
-                        </span>
-                        <h4 class="my-3">Modern Clubs </h4>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class='fas fa-horse-head fa-stack-1x fa-inverse'></i>
-                        </span>
-                        <h4 class="my-3">Courses and lessons for different ages </h4>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class='fas fa-solid fa-horse-saddle fa-stack-1x fa-inverse'></i>                  
-
-                           </span> 
-                        <h4 class="my-3">Affordable prices </h4>
-                </div>
-            </div>
-        </section>
-        <!-- Portfolio Grid-->
-        <div class="container">
-            <h2> Top Clubs !</h2>
-        
-            <div class="row">
-                {% for club in top_clubs %}
-                    <div class="col-3">
-                        <div class="p-4 shadow" >
-                            <img src="{{ club.image.url }}" class="w-100" />
-                            <a href="{% url 'main:club_detail' club.id %}" class="text-decoration-none"><h4 class="mt-4"><p style="padding-top: 3%;"><strong>Club name :</strong> {{club.club_name}}</p></a>
-        
-                            <div class="mt-3">
-                                <p class="title mb-4"><strong> services :</strong>{{club.club_services}}</p>
-                                <p class="title mb-4"><strong>Price :</strong> {{club.price}}</p>
-                            </div>
-        
-                            <h6>Rating: {{ club.rating }}</h6>
+            <div class="row pt-5 mt-30">
+                <div class="col-lg-4 col-sm-6 mb-30 pb-5">
+                    <a class="card" href="#">
+                        <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"><i class="fa fa-dollar fa-3x head-icon"></i></div>
+                        <div class="card-body text-center">
+                            <p class="text-decoration-none"><strong>Affordable prices</strong></p>
+                            <p class="card-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span class="text-sm text-uppercase font-weight-bold">Learn More&nbsp;<i class="fe-icon-arrow-right"></i></span>
                         </div>
-                    </div>
-                {% endfor %}
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6 mb-30 pb-5">
+
+
+                    <a class="card" href="#">
+                        <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"><i class="fa fas fa-school fa-3x head-icon"></i></div>
+                        <div class="card-body text-center">
+                            <p class="text-decoration-none"><strong>Modern Clubs</strong></p>
+                            <p class="card-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span class="text-sm text-uppercase font-weight-bold">Learn More&nbsp;<i class="fe-icon-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6 mb-30 pb-5">
+                    <a class="card" href="#">
+                        <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"><i class="fas fa-horse  fa-3x head-icon"></i></div>
+                        <div class="card-body text-center">
+                            <p class="text-decoration-none"><strong>Courses and lessons for different ages</strong></p>
+                            <p class="card-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span class="text-sm text-uppercase font-weight-bold">Learn More&nbsp;<i class="fe-icon-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+                </div>
+                </section>
+        
+        <!-- Portfolio Grid-->
+        <div class="container" id="top_clubs">
+            <h2 class="text-uppercase" style="text-align: center;"> Top Clubs !</h2>
+            <div class="container">
+                <div class="row">
+                    {% for club in top_clubs %}
+
+                    <div class="col-md-4 col-sm-6 content-card">
+                        <div class="card-big-shadow">
+                            <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                                <div class="content">
+                                    <p class="text-decoration-none">{{club.club}}</p>
+                                    </h4>
+                                    <h6>Rating: {{ club.rating }}</h6>
+                                    <button class="button-74" role="button"><a href="{% url 'main:club_detail' club.id %}" > Details</a>
+                                    </button>
+
+                                    
+                                </div>
+                                </div>
+                                </div>
+                            </div> 
+                            {% endfor %}
+
+                            </div>
+
+                            </div>
+                            </div><!-- end card -->
+
+                
+        
+                
         
         <!-- About-->
         <section class="page-section" id="about">
@@ -522,6 +766,28 @@
         </section>
         <!-- Footer-->
         {% endblock %}
+        {% if not request.COOKIES.consent %}
+
+      <div class="modal d-flex align-items-end justify-content-end " tabindex="-1">
+        <div class="modal-dialog w-100">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Terms of Service</h5>
+            <a href="{% url 'main:home_page' %}"> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+            </div>
+            <div class="modal-body">
+              <p>To use our website Please Accept the terms of service</p>
+            </div>
+            <div class="modal-footer">
+              <a href="{% url 'main:consent_to_tos' %}"><button type="button" class="btn btn-primary">Accept</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>    {% endif %}
+
+
         <!-- Bootstrap core JS-->
         <script src="{% static 'main/https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' %}"></script>
         <!-- Core theme JS-->
