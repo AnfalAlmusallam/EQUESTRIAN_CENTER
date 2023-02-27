@@ -252,7 +252,7 @@ p, .p {
         <!-- Navigation-->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="{% url 'main:home_page' %}"><img src="{% static 'images/horse_logo.png'%}" alt=" horse_logo " style="height: 100px; width: 140px;" /></a>
+                <a class="navbar-brand" href="{% url 'main:home_page' %}"><img src="{% static 'images/horse_logo.png'%}" alt=" horse_logo " style="height: 100px; width: 130px;" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -369,7 +369,7 @@ p, .p {
                                     <p class="text-decoration-none">{{club.club}}</p>
                                     </h4>
                                     <h6>Rating: {{ club.rating }}</h6>
-                                    <button class="button-74" role="button"><a href="{% url 'main:club_detail' club.id %}" > Details</a>
+                                    <button class="button-74" role="button"><a href="{% url 'main:club_detail' club.club_id %}"> Details</a>
                                     </button>
 
                                     
@@ -471,21 +471,21 @@ p, .p {
         <!-- Portfolio Modals-->
         <!-- Portfolio item 1 modal popup-->
         <div class="wrapper">
-            <div class="title">Work <small>Hard</small> Play <small>Hard</small></div>
+            <div class="title"><small>Hard</small> Play <small>Hard</small></div>
             <div class="description">
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus    odio adipisci ducimus? Impedit est dolore maxime unde repudiandae blanditiis        veritatis accusamus, in fugit excepturi optio aperiam officia eius, omnis          numquam omnis  numquam. omnis   numquam.</p>
+               <p> Equestrian Center is the best  horse center  I have ever visit.</p>
             </div>
          </div>
          <div class="wrapper border-radius" id="testimonial">
             <div class="description text-right">
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus    odio adipisci ducimus? Impedit est dolore maxime unde repudiandae blanditiis        veritatis accusamus, in fugit excepturi optio aperiam officia eius, omnis          numquam omnis  numquam. omnis   numquam.</p>
+               <p>I recommend everyone use this website it's amazing you can book online </p>
             </div>
-            <div class="title">Work <small>Hard</small> Play <small>Hard</small></div>
+            <div class="title">Work <small>Hard</small> Waled <small>Hard</small></div>
          </div>
          <div class="wrapper border-radius">
             <div class="title">Work <small>Hard</small> Play <small>Hard</small></div>
             <div class="description">
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus    odio adipisci ducimus? Impedit est dolore maxime unde repudiandae blanditiis        veritatis accusamus, in fugit excepturi optio aperiam officia eius, omnis          numquam omnis  numquam. omnis   numquam.</p>
+               <p>Good prices and easy to book .</p>
             </div>
          </div>
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
@@ -766,26 +766,7 @@ p, .p {
         </section>
         <!-- Footer-->
         {% endblock %}
-        {% if not request.COOKIES.consent %}
-
-      <div class="modal d-flex align-items-end justify-content-end " tabindex="-1">
-        <div class="modal-dialog w-100">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Terms of Service</h5>
-            <a href="{% url 'main:home_page' %}"> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-            </div>
-            <div class="modal-body">
-              <p>To use our website Please Accept the terms of service</p>
-            </div>
-            <div class="modal-footer">
-              <a href="{% url 'main:consent_to_tos' %}"><button type="button" class="btn btn-primary">Accept</button></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>    {% endif %}
+       
 
 
         <!-- Bootstrap core JS-->

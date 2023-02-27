@@ -49,10 +49,9 @@ def loged_out(request:HttpRequest):
     return render(request,"accounts/logout.html")
 
 
-def profile_user(request : HttpRequest,club_id):
+def profile_user(request : HttpRequest):
 
-    club= Club.objects.get(id=club_id)
-    book= Booking.objects.filter(club=club,user= request.user)
+    book= Booking.objects.filter(user=request.user.id)
 
-    return render(request, "accounts/profile.html",{"club":club,"book":book})
-
+    return render(request,"accounts/profile.html",{"book":book})
+ 

@@ -42,11 +42,10 @@ class Review(models.Model):
     rating=models.FloatField()
     image= models.ImageField(upload_to="profile_pic",default='images/defult.jpg')
     created_at=models.DateTimeField(auto_now_add=True)
-    def __str__(self) -> str:
     
 
 
-     '''Create class named Contact nd its objects to contact with client'''
+'''Create class named Contact nd its objects to contact with client'''
 
 class Contact(models.Model):
      first_name=models.CharField(max_length=50)
