@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-'''Create Class Profile for user '''
+'''Create Class Profile for user to display her personal information and booking'''
 class Profile(models.Model):
 
     #choices

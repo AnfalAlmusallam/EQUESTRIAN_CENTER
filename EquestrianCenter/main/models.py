@@ -5,9 +5,9 @@ from django.contrib.auth.models import User
 '''Create class named Club and its objects '''
 class Club(models.Model):
 
-    PRICE_CHOICES=models.TextChoices('price',['50$','100$','200$','300$'])
+    PRICE_CHOICES=models.TextChoices('price',['50$','100$','150$','200$','250$','300$','350$','400$','450$'])
     
-
+    feature=models.TextField()
     image= models.ImageField(upload_to="images/%y/%m/%d")
     club_name= models.CharField(max_length=10)
     club_services= models.TextField()
