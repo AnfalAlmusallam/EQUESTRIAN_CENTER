@@ -8,6 +8,8 @@ class Club(models.Model):
     PRICE_CHOICES=models.TextChoices('price',['50$','100$','150$','200$','250$','300$','350$','400$','450$'])
     
     feature=models.TextField()
+    open_at=models.TimeField()
+    closed_at=models.TimeField()
     image= models.ImageField(upload_to="images/%y/%m/%d")
     club_name= models.CharField(max_length=10)
     club_services= models.TextField()

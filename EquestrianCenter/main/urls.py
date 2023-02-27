@@ -13,7 +13,6 @@ urlpatterns =[
     path("delete/club/<club_id>/",views.delete_club,name="delete_club"),
     path("book_detail/<club_id>/",views.book_detail,name="book_detail"),
     path("book/add/<club_id>/", views.book_club,name="book_club"),
-    path("consent/tos/", views.consent_to_TOS, name="consent_to_tos"),
     path("success/contact/",views.success_conact,name="success_contact"),
     path("success/book/",views.success_book,name="success_book"),
 ]
