@@ -54,4 +54,5 @@ def profile_user(request : HttpRequest):
     book= Booking.objects.filter(user=request.user.id)
 
     return render(request,"accounts/profile.html",{"book":book})
+
  

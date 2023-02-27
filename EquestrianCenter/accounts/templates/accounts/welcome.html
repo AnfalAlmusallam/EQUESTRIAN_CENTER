@@ -50,7 +50,7 @@ body{
                                 <i class="mdi mdi-adjust bg-success"></i>
                             </div>
                             <div class="event-content p-4" >
-                                <h3 class="mt-0 mb-3 font-18">Welcome {{request.user.username}}</h3>
+                                <h3 class="mt-0 mb-3 font-18">Welcome {{request.user.first_name}}</h3>
                                 <div class="text-muted">
                                     <p class="mb-2">You're in !</p>
                                     <a href="{% url 'main:home_page' %}">Click here</a></h5>

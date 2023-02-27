@@ -155,27 +155,24 @@
       }
     </style>
   
-    <div class="testbox" style="padding-top: 25%;">
-        <form action="{% url  'main:book_club' club.id %}" method="post">
+    <div class="testbox" style="padding-top: 20%;">
+        <form action="" method="post">
             {% csrf_token %} 
-      <div class="banner">
-        <h1>Booking Form</h1>
-      </div>
       <br/>
       <fieldset>
         <legend>Reservation Details</legend>
         <div class="columns">
-  
+        
           <div class="item">
           <label for="initial_time">initial time :<span>*</span></label>
-          <input id="initial_time" type="time" name="initial_time"/>
+          <input id="initial_time" type="time" name="initial_time" value="{{update.initial_time}}"/>
           </div>
           <div class="item">
             <label for="final_time">Final time :<span>*</span></label>
-          <input id="final_time" type="time" name="final_time"/>
+          <input id="final_time" type="time" name="final_time" value="{{update.final_time}}"/>
           </div>
           <div class="item">
-          <button type="submit" value="Book Now"> Submit</button>
+          <button type="submit" value=" update booking"> Submit</button>
           </div>
       </div>
     </form>

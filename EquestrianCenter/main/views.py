@@ -96,11 +96,13 @@ def book_detail(request : HttpRequest, club_id):
     
     return render(request,"main/book_detail.html", {"club":club,"book":book})
 
-def check_availbal_date(date1 : datetime , date2 :datetime) -> bool:
+def check_available_date(date1 : datetime , date2 :datetime) -> bool:
     if date1 == date2:
         return True
     else:
         return False
+
+
     
 
 def book_club(request : HttpRequest,club_id):
@@ -116,23 +118,15 @@ def book_club(request : HttpRequest,club_id):
 
         else: 
            new_book.save()
-           return redirect('main:home_page')
+           return redirect('main:success_book')
 
 
         
     return redirect("main:book_detail", club_id=club_id)
  
+def success_book(request:HttpRequest):
+    return render(request,"main/success_book.html")
 
 def success_conact(request:HttpRequest):
     return render(request,"main/contact.html")
-
-
-
-
-
-
-
-
-
-
 
