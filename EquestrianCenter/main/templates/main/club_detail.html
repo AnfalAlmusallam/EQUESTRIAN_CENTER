@@ -134,15 +134,18 @@ a{
     color: #ffffff;
     background-color: #252525;
 }</style>
+<div class="container-fluid">
 <div class="row">
     <div class="container-fluid" style="height:30em;width: 30em; margin-top: 3%;">
         <div class="card border-0 bg-light rounded shadow">
             <div class="card-body p-4">
-                <span class="badge rounded-pill bg-primary float-md-end mb-3 mb-sm-0">Full time</span>
                 <img src="{{ club.image.url }}" class="w-100" />
                 <p style="padding-top: 3%;"><strong>Club name :</strong> {{club.club_name}}</p>
                 <div class="mt-3">
-                    <p><strong> services :</strong>{{club.club_services}}</p>
+                    <p><strong> Services :</strong>{{club.club_services}}</p>
+                    <p><strong> Features :</strong>{{club.feature}}</p>
+                    <p><strong> Open at :</strong>{{club.open_at}}</p>
+                    <p><strong> Closed at :</strong>{{club.closed_at}}</p>
                     <p><strong>Price :</strong> {{club.price}}</p>
                 </div>
                 {% if request.user.is_staff %}
@@ -153,6 +156,7 @@ a{
             </div>
         </div>
     </div><!--end col-->
+</div>
     {% if request.user.is_authenticated %}
     <div class="mt-3">
         <div>
@@ -161,7 +165,7 @@ a{
      <section id="testimonials">
       <!--heading--->
 
-      <div class="testimonial-heading" style="padding-top:5%;">
+      <div class="testimonial-heading" style="padding-top:20%;">
           <span>Comments</span>
           <h1>Clients Says</h1>
       </div>
@@ -237,20 +241,16 @@ a{
 
             </form>
       
-
     {% else %}
 
-    <div class="border p-3 mt-3 ">
+    <div class=" p-3 mt-3 fixed-bottom">
         <p>To add reveiew please <a href="{% url 'accounts:login_user'%}">Sing In</a> or <a href="{% url 'accounts:register_user'%}">Sign Up</a></p>
     </div>
 
     {% endif %}
 
-
-
 </div>
 <div  class=" mt-3">
-  <h3>Reviews :</h3>
 
   {% for review in reviews  %}
           <!--testimonials-box-container------>
@@ -261,11 +261,6 @@ a{
                   <div class="box-top">
                       <!--profile----->
                       <div class="profile">
-                          <!--img---->
-                          <div class="profile-img">
-                              <img src="{{ review.image.url }}"/>
-                              " />
-                          </div>
                           <!--name-and-username-->
                           <div class="name-user">
                               <strong>{{ review.user.username }}</strong>

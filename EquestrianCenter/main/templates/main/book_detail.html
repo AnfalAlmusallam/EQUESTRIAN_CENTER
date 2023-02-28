@@ -167,12 +167,12 @@
         <div class="columns">
   
           <div class="item">
-          <label for="initial_time">initial time :<span>*</span></label>
-          <input id="initial_time" type="time" name="initial_time"/>
+          <label for="initial_date_time">initial date time :<span>*</span></label>
+          <input id="initial_date_time" type="datetime-local" name="initial_date_time"/>
           </div>
           <div class="item">
-            <label for="final_time">Final time :<span>*</span></label>
-          <input id="final_time" type="time" name="final_time"/>
+            <label for="final_date_time">Final date time :<span>*</span></label>
+          <input id="final_date_time" type="datetime-local" name="final_date_time"/>
           </div>
           <div class="item">
           <button type="submit" value="Book Now"> Submit</button>
@@ -186,7 +186,7 @@
     {% else %}
 
     <div class="border p-3 mt-3 ">
-        <p>To add reveiew please <a href="{% url 'accounts:login_user'%}">Sing In</a> or <a href="{% url 'accounts:register_user'%}">Sign Up</a></p>
+        <p>To book please <a href="{% url 'accounts:login_user'%}">Sing In</a> or <a href="{% url 'accounts:register_user'%}">Sign Up</a></p>
     </div>
 
     {% endif %}

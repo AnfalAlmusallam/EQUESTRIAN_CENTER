@@ -361,13 +361,21 @@
                                 </div>
                                 <div class="widget-49-meeting-info">
                                     <span class="widget-49-pro-title fs-5"><strong>{{club.club_name}}</strong></span>
-                                    <span class="widget-49-meeting-time">{{club.created_at}}</span>
+                                    <span class="widget-49-meeting-time">{{club.open_at}}</span>
+                                    <span class="widget-49-meeting-time">{{club.closed_at}}</span>
+
                                 </div>
                             </div>
                             <div class="widget-49-meeting-points">
                                <p class="text fs-0.10"><strong> services :</strong></p>
-                                <p class="widget-49-meeting-item"><span>{{club.club_services}}</span>                
+                                <p class="widget-49"><span>{{club.club_services}}<br></span>                
                                 </p>
+                                  <p class="text fs-0.10"><strong> Features :</strong></p>
+                                   <p class="widget-49"><span>{{club.feature}}<br></span>                
+                                   </p>
+                                   <p class="text fs-0.10"><strong> Price :</strong></p>
+                                   <p class="widget-49"><span>{{club.price}}<br></span>                
+
                             </div>
                             <div class="widget-49-meeting-action">
                                 <div class="d-grid gap-2 d-md-block">

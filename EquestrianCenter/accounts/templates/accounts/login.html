@@ -1,11 +1,8 @@
 {% extends 'main/home.html' %}
-{% block title%}  {% endblock %}
+{% block title%}login in {% endblock %}
 {% block content %}
 <style>
-body{
-    margin-top:20px;
-    background-color: #f2f3f8;
-}
+
 .card {
     margin-bottom: 1.5rem;
     box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);
@@ -31,16 +28,11 @@ body{
             <div class="d-table-cell align-middle">
 
                 <div class="text-center mt-4" >
-                    <h1 class="h2" style="padding-top:11%;">Please sign in </h1>
+                    <h1 class="h2" style="padding-top:11%; font-family: 'Kalam',cursive;padding-bottom:5%;">Please sign in </h1>
                     {% if msg %}
                     <h6 class="text-danger" >{{msg}}</h6>
-
-                    {% endif %}
-                    
+                    {% endif %}  
                 </div>
-              
-                
-
                 <div class="card">
                     <div class="card-body">
                         <div class="m-sm-4">
@@ -65,7 +57,7 @@ body{
                                     
                                 </div>
                             </form>
-                            <h5 style="padding-top: 3%;">If you don't have an account,you can <a href="{% url 'accounts:register_user' %}">register here</a></h5>
+                            <h5 style="padding-top: 3%; font-family: 'Kalam',cursive;">If you don't have an account,you can <a href="{% url 'accounts:register_user' %}">register here</a></h5>
                         </div>
                     </div>
                 </div>
