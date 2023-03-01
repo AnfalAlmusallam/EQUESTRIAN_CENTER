@@ -1,3 +1,4 @@
+from sqlite3 import IntegrityError
 from django.shortcuts import render,redirect
 from django.http import HttpRequest, HttpResponse
 from django.contrib.auth.models import User
@@ -10,14 +11,19 @@ from main.models import Club,Booking
 
 '''create user '''
 def register_user(request:HttpRequest):
+    msg= None
     if request.method=="POST":
-       
-       new_user=User.objects.create_user(username=request.POST["username"], email=request.POST["email"], password=request.POST["password"], first_name = request.POST["first_name"], last_name = request.POST["last_name"])
-       new_user.save()
-
-       '''Creating the profile'''
-       user_profile = Profile(user=new_user, birth_date=request.POST["birth_date"], gender=request.POST["gender"])
-       user_profile.save()
+       try:
+           new_user=User.objects.create_user(username=request.POST["username"], email=request.POST["email"], password=request.POST["password"], first_name = request.POST["first_name"], last_name = request.POST["last_name"])
+           '''Creating the profile'''
+           user_profile = Profile(user=new_user, birth_date=request.POST["birth_date"], gender=request.POST["gender"])
+           
+       except IntegrityError:
+           msg="We have user has the same information"
+       else:
+           msg="The user has been registered successfully"
+           new_user.save()
+           user_profile.save()
 
         #if register successful redirect to sign in page
        return redirect("accounts:login_user")
