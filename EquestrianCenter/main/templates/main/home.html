@@ -62,7 +62,6 @@
                 margin-bottom: 0px;
             }
             .card-big-shadow:before {
-                background-image: url("http://static.tumblr.com/i21wc39/coTmrkw40/shadow.png");
                 background-position: center bottom;
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
@@ -251,7 +250,7 @@ p, .p {
         <!-- Navigation-->
             <body id="page-top" style="height: 20rem;font-family: 'Kalam',cursive;">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="mainNav">
-            <div class="container">
+            <div class="container-fluid fixed-top" style="background-color:#212529;width: 100%;">
                 <a class="navbar-brand" href="{% url 'main:home_page' %}"><img src="{% static 'images/horse_logo.png'%}" alt=" horse_logo " style="height: 100px; width: 130px;" /></a>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-md-0">
@@ -425,9 +424,8 @@ p, .p {
                             <img class="mx-auto rounded-circle" src="{% static 'images/anfal_team.png'%}" alt="anfal_team" />
                             <h4>Anfal </h4>
                             <p class="text-muted">Team Leader </p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/anfal-almusallam-22897a207" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://twitter.com/Anfal_almusalam" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -435,9 +433,8 @@ p, .p {
                             <img class="mx-auto rounded-circle" src="{% static 'images/manal_team.png'%}" alt="manal_team" />
                             <h4>Manal</h4>
                             <p class="text-muted">Administrative officer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/anfal-almusallam-22897a207" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://twitter.com/Anfal_almusalam" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -445,9 +442,8 @@ p, .p {
                             <img class="mx-auto rounded-circle" src="{% static 'images/raghad_team.png'%}" alt="raghad_team" />
                             <h4>Raghad </h4>
                             <p class="text-muted"> Administrative officer </p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/anfal-almusallam-22897a207" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://twitter.com/Anfal_almusalam" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
@@ -456,7 +452,6 @@ p, .p {
                 </div>
             </div>
         </section>
-       
         <!-- Portfolio Modals-->
         <!-- Portfolio item 1 modal popup-->
         {% if request.user.is_authenticated %}
@@ -494,21 +489,53 @@ p, .p {
          
             </div>
         </div>
-     
+        <!-- Contact-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase" style="padding-bottom: 3%;">Contact Us</h2>
+                </div>
+                <form  data-sb-form-api-token="API_TOKEN" action="{% url 'main:home_page' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row align-items-stretch mb-5">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <!-- Name input-->
+                                    <input class="form-control" name="first_name" type="text" placeholder="First Name *" data-sb-validations="required" />
+                                    <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                                </div>
+                                <div class="form-group">
+                                    <!-- Name input-->
+                                    <input class="form-control" name="last_name" type="text" placeholder="Last Name *" style="margin-bottom: 3%; margin-top: 3%;" data-sb-validations="required" />
+                                    <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                                </div>
+                                <div class="form-group">
+                                    <!-- Email address input-->
+                                    <input class="form-control" type="email" name="email" placeholder="Your Email *" data-sb-validations="required,email" />
+                                    <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                    <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-group-textarea mb-md-0">
+                                    <!-- Message input-->
+                                <textarea class="form-control" name="msg"placeholder="Your Message *" data-sb-validations="required"></textarea>
+                            </div>
+                        </div>                                
+                    </div>
+                    <div class="container">
+                        <div class="text-center">
+                    <button class="button-74" role="button" value="submit" type="submit">Send Message
+                    </button>
+                    </div>
+
+                </form>
         {% endblock %}
        
 
 
-        <!-- Bootstrap core JS-->
-        <script src="{% static 'main/https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' %}"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="{% static 'main/https://cdn.startbootstrap.com/sb-forms-latest.js' %}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
 
     </body>

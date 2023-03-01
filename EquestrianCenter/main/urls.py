@@ -13,7 +13,6 @@ urlpatterns =[
     path("review/add/<club_id>/", views.add_review,name="add_review"),
     path("book_detail/<club_id>/",views.book_detail,name="book_detail"),
     path("book/add/<club_id>/", views.book_club,name="book_club"),
-    path("apologize/club/",views.apologize_club,name="apologize_club"),
     path("success/contact/",views.success_conact,name="success_contact"),
     path("success/book/",views.success_book,name="success_book"),
     path("apologize/club/",views.apologize_club,name="apologize_club"),
