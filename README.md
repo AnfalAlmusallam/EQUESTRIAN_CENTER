@@ -21,5 +21,5 @@ We are responsable of add ,update and delete clubs also, we can delete review an
  as a custemer I can see available clubs and show the detail for each club also, add review and rate clubs If you have been visited before however,I can see rating of club before booking it .
  also,add comment If you like of Equestrian Center. I can press on profile and the booking will apear.
 
- *** visitor : Everyone ***
+ *** visitor ***
   As everyone can see available clubs and show the detail for each club and send massege If we want to ask about anything.   
