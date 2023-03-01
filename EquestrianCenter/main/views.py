@@ -125,8 +125,7 @@ def book_club(request : HttpRequest,club_id):
 
 
 '''If the custumer book on date not available or time '''
-def apologize_club(request:HttpRequest):
-        return render(request,"main/apologize")
+
 
 '''success booking'''
 def success_book(request:HttpRequest):

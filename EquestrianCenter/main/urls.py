@@ -15,7 +15,6 @@ urlpatterns =[
     path("book/add/<club_id>/", views.book_club,name="book_club"),
     path("success/contact/",views.success_conact,name="success_contact"),
     path("success/book/",views.success_book,name="success_book"),
-    path("apologize/club/",views.apologize_club,name="apologize_club"),
     path("add/comment/",views.add_comment,name="add_comment"),
 
 ]
